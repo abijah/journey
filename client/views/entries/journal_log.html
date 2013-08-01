@@ -1,0 +1,9 @@
+<template name="journalLog">
+	{{> addEntry}}
+
+  <div class="entries">
+    {{#each entries}}
+      {{> entryItem}}
+    {{/each}}
+  </div>
+</template>
