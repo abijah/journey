@@ -10,17 +10,20 @@ Entries.allow({
   Meteor.methods({
   	entry: function(entryAttributes) {
   		var user = Meteor.user();
-
-  		if (!user)
+      var firstname = user.profile.firstname;
+     
+     	if (!user)
   		throw new Meteor.Error(401, "You need to login to post new stories");
   		
   		if (!entryAttributes.message)
   		throw new Meteor.Error(422, 'Please enter message');
 
-  		var entry = _.extend(_.pick(entryAttributes, 'message'), {
+
+  		var entry = _.extend(_.pick(entryAttributes, 'message', 'status'), {
 	      userId: user._id, 
-	      author: user.username, 
-	      submitted: new Date().getTime()
+	      author: firstname, 
+	      submitted: new Date().getTime(),
+        commentsCount: 0
   		});
 
   		var entryId = Entries.insert(entry);

@@ -5,6 +5,7 @@ Template.addEntry.events({
 
      var entry = {
       message: $(event.target).find('[name=message]').val(),
+      status: 'unread',
 //      userId: user._id, 
 //      author: user.username, 
 //      submitted: new Date().getTime()

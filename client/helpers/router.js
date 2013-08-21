@@ -4,6 +4,8 @@ Meteor.Router.add({
   	to: 'entryPage',
   	and: function(id) { Session.set('currentEntryId', id); }
   },
+  '/live': 'livePage',
+  '/signup':'user_signup'
 
 });
 

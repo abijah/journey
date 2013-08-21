@@ -6,3 +6,14 @@
 preserve-inputs
 accounts-password
 bootstrap
+standard-app-packages
+HTML5-History-API
+page-js-ie-support
+purecss
+moment-timezone
+moment-alternative
+stripe
+spin
+router
+roles
+accounts-ui

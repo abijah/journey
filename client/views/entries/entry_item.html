@@ -1,7 +1,11 @@
 <template name="entryItem">
   <div class="entry">
-    <div class="entry-content" >
-      <h3><a href="{{url}}">{{timeStamp}}</a><span class="editable"> {{message}}</span></h3>
+    <div class="entry-content">
+      <div><a href="{{url}}">{{timeStamp}}</a><span class="editable"> {{message}}</span></div>
+                  <p>
+        submitted by {{author}},
+        <a href="{{entryPagePath this}}">{{commentsCount}} comments</a>
+      </p>
       </div>
       <a href="{{entryPagePath this}}" class="discuss btn">Discuss</a>
   </div>

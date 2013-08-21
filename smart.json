@@ -4,6 +4,8 @@
     "accounts-ui-bootstrap-dropdown": {},
     "purecss": {},
     "stripe": {},
-    "spin": {}
+    "spin": {},
+    "roles": {},
+    "moment-timezone": {}
   }
 }
