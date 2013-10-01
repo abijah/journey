@@ -3,14 +3,14 @@ Template.user_profile.user = function(){
 		return Meteor.users.findOne(userId);
 	}
 }
-
+/*
 Template.user_profile.avatarUrl = function(){
 	return Gravatar.getGravatar(this, {
 		d: 'http://telescope.herokuapp.com/img/default_avatar.png',
 		s: 80
 	});
 }
-
+*/
 Template.user_profile.createdAtFormatted = Template.user_item.createdAtFormatted;
 
 Template.user_profile.isCurrentUser = function(){

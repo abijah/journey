@@ -1,15 +1,31 @@
 <template name="entryPage">
 	{{#with currentEntry}}
-	{{> entryItem}}
-	<ul class="comments">
+    {{> entryItem}}
+  	<ul class="comments">
       {{#each comments}}
         {{> comment}}
       {{/each}}
-  </ul>
+    </ul>
+
+
+    <ul class="comments testimonies">
+      {{#each testimonies}}
+      {{> testimony}}
+      {{/each}}
+    </ul>
+
+
     {{#if currentUser}}
       {{> commentSubmit}}
     {{else}}
       <p>Please log in to leave a comment.</p>
     {{/if}}
-	{{/with}}
+
+  {{#if currentUser}}
+      {{> addTestimony}}
+    {{else}}
+      <p>Please log in to post a testimony.</p>
+    {{/if}}
+  {{/with}}
+
 </template>

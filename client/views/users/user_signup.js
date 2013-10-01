@@ -17,12 +17,13 @@ Template.user_signup.events = {
 
       }
       Accounts.createUser({
- //         username: username
+ //     username: username,
         email: email,  
         password: password,
-        profile: {
+        profile: {name: {
           firstname: firstname,
           lastname: lastname
+        }
         }
       }, function(err){
         if(err){

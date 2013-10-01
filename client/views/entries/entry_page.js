@@ -4,7 +4,11 @@ Template.entryPage.helpers({
   },
   comments: function() {
     return Comments.find({entryId: this._id});
+  },
+  testimonies: function() {
+    return Testimonies.find({entryId: this._id});
   }
+
 });
 
  Template.entryPage.rendered = function () {
@@ -14,5 +18,12 @@ Template.entryPage.helpers({
   $('.editable').editable(function(value, setting){ 
      Entries.update(currentEntryId, {$set: {message: (value)}});
       return(value);
-    });
+    }, {
+    type: 'textarea',  
+    submit: 'OK',
+    tooltip: 'click to edit',
+  });
+  
+  $('#right-triangle').hide();
+
 }

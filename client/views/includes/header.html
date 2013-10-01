@@ -1,26 +1,41 @@
 <template name="header">
-  <header class="navbar">
-    <div class="navbar-inner">
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <a class="brand" href="{{journalLogPath}}">Journal</a>
-      <div class="nav-collapse collapse">
-        <ul class="nav">
-          <li><a href="{{myJournalPath}}">My Journal</a></li>
-        </ul>
-        <ul class="nav">
+  <header>
+    <nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+      <a class="navbar-brand" href="{{entryLogPath}}">Journal</a>
+    </div>
+
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="{{entryLogPath}}">My Journal</a></li>
           <li><a href="{{livePagePath}}">Live</a></li>
+          <li><a href="{{usersPath}}">Users</a></li>
         </ul>
-                <ul class="nav">
+        <ul class="nav navbar-nav navbar-right">
+         <li>{{#if currentUser}}</li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{currentUser.profile.name.firstname}} {{currentUser.profile.name.lastname}}<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/profile">View Profile</a></li>
+                <li role="presentation" class="divider"></li>
+                <li id="logout"><a href="#">Sign Out</a></li>
+              </ul>
+            </li>
+
+
+          {{else}}
           <li><a href="{{user_signupPath}}">Sign Up</a></li>
-        </ul>
-        <ul class="nav pull-right">
-          <li>{{loginButtons}}</li>
+          <li><a href="{{user_signinPath}}">Sign In</a></li>
+         {{/if}}
         </ul>
       </div>
-    </div>
+
+  </nav>
   </header>
 </template>

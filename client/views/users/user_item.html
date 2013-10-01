@@ -1,6 +1,8 @@
 <template name="user_item">
 <tr class="user">
+<!--
 	<td><span class="user-avatar" style="background-image:url({{avatarUrl}});"></span></td>
+-->	
 	<td><a href="/users/{{_id}}/edit">{{displayName}}</a></td>
 	<td>{{createdAtFormatted}}</td>
 	<td>{{profile.email}}</td>
@@ -13,7 +15,7 @@
 		</ul>
 	</td>
 	<td><a href="#">{{commentsCount}}</a></td>
-	<td>{{karma}}</td>
+<!--	<td>{{karma}}</td>	-->
 	<td>{{#if isInvited}}<a class="uninvite-link" href="#"><i class="icon-check"></i>Uninvite</a>{{else}}<a href="#" class="invite-link">Invite</a>{{/if}}</td>
 	<td>{{#if userIsAdmin}}<a class="unadmin-link" href="#"><i class="icon-check unadmin-link"></i>Unadmin</a>{{else}}<a href="#" class="admin-link">Make admin</a>{{/if}}</td>
 	<td><a class="delete-link" href="#">Delete User</a></td>

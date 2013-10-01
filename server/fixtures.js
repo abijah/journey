@@ -1,4 +1,4 @@
-if (Entries.find().count() === 0) {
+/*if (Entries.find().count() === 0) {
   var now = new Date().getTime();
 
   var danielId = Meteor.users.insert({
@@ -51,3 +51,4 @@ if (Entries.find().count() === 0) {
   });
 
 }
+*/

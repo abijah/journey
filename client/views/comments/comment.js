@@ -1,5 +1,5 @@
 Template.comment.helpers({
-  submittedText: function() {
+  submittedOn: function() {
     return new Date(this.submitted).toString();
   }
 });

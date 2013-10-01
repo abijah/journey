@@ -2,9 +2,10 @@ Template.user_item.rendered = function(){
 };
 
 Template.user_item.helpers({
-	avatarUrl: function(){
+/*	avatarUrl: function(){
 		return getAvatarUrl(this);
 	},
+*/	
 	createdAtFormatted: function(){
 		return this.createdAt ? moment(this.createdAt).fromNow() : '–';
 	},

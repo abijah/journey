@@ -6,9 +6,18 @@ Template.entryItem.helpers({
     },
 	timeStamp: function() {
 		return moment(new Date(this.submitted)).calendar();
-	}
-/*	timeStamp: function() {
+	},
+/*
+	timeStamp: function() {
 		return new Date(this.submitted).toLocaleString();
 	}
 */
+
+submittedBy: function() {
+	if (this.userId === Meteor.userId()){
+			return "Me";
+		}else{
+			return this.author;
+		}
+}
 });

@@ -6,6 +6,7 @@
     "stripe": {},
     "spin": {},
     "roles": {},
-    "moment-timezone": {}
+    "moment-timezone": {},
+    "bootstrap-3": {}
   }
 }
