@@ -1,4 +1,4 @@
-<template name="user_edit">
+<template name="userEdit">
   <div class="grid-small grid-block dialog user-edit">
   	{{#with user}}
     {{#if profileIncomplete}}
@@ -7,47 +7,48 @@
     </div>
     {{/if}}
     <form>
-      <h2>Account</h2>
+      <h3>Account<p><small>Change your account settings.</small></p></h3>
+      <hr></hr>
+
       {{#if username}}
-      <div class="control-group">
+      <div class="form-group">
         <label>Username</label>
         <div class="controls">
           <input id="username" name="username" disabled="disabled" type="text" value="{{username}}" />
         </div>
       </div>
       {{/if}}
-<!--       <div class="control-group">
-        <label>Email</label>
-        <div class="controls">
-          <input id="email" name="email" disabled="disabled" type="text" value="{{email}}" />
-        </div>
-      </div> -->
-      <div class="control-group">
-        <label>Display Name</label>
-        <div class="controls">
-          <input name="name" type="text" value="{{profile.name.firstname}} {{profile.name.lastname}}" />
-        </div>
+
+      <div class="form-group">
+        <label for="firstname">First name</label>
+          <input id="firstname" type="text" class="form-control" value="{{profile.name.firstname}}" />
       </div>
-      <div class="control-group">
-        <label>Email</label>
-        <div class="controls">
-          <input name="email" type="text" value="{{userEmail}}" />
-        </div>
+
+      <div class="form-group">
+        <label for="lastname">Last name</label>
+          <input id="lastname" type="text" class="form-control" value="{{profile.name.lastname}}" />
       </div>
-      <div class="control-group">
-        <label>Bio</label>
-        <div class="controls"><textarea name="bio" type="text">{{profile.bio}}</textarea></div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+          <input name="email" type="text" class="form-control" value="{{userEmail}}" />
       </div>
-      <h3>Change Password?</h3>
-      <div class="control-group">
-        <label>Old Password</label>
-        <div class="controls"><input name="old_password" type="text" value="" /></div>
+
+      <div class="form-group">
+        <label for="bio">Bio</label>
+        <textarea name="bio" type="text" class="form-control" rows="10">{{profile.bio}}</textarea>
       </div>
-      <div class="control-group">
-        <label>New Password</label>
-        <div class="controls"><input name="new_password" type="text" value="" /></div>
+
+      <h3>Change Your Password</h3>
+      <div class="form-group">
+        <label for="old_password">Old Password</label>
+        <div class="controls"><input id="old_password" type="text" value="" /></div>
       </div>
-          <div class="control-group">
+      <div class="form-group">
+        <label for="new_password">New Password</label>
+        <div class="controls"><input id="new_password" type="text" value="" /></div>
+      </div>
+          <div class="form-group">
             <label class="control-label">Email Notifications</label>
             <div class="controls">
               <label class="radio">

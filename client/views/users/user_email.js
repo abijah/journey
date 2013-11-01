@@ -1,4 +1,4 @@
-Template.user_email.events = {
+Template.userEmail.events = {
   'submit form': function(e){
     e.preventDefault();
     if(!Meteor.user()) throwError('You must be logged in.');
@@ -26,11 +26,11 @@ Template.user_email.events = {
 
 };
 
-Template.user_email.profileIncomplete = function() {
+Template.userEmail.profileIncomplete = function() {
   return Meteor.user() && !this.loading && !userProfileComplete(this);
 }
 
-Template.user_email.user = function(){
+Template.userEmail.user = function(){
 	var current_user=Meteor.user();
 	if(Session.get('selectedUserId') && !current_user.loading && current_user.isAdmin){
 	  return Meteor.users.findOne(Session.get('selectedUserId'));

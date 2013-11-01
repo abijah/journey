@@ -8,11 +8,16 @@ Meteor.publish('testimonies', function(entryId) {
   return Testimonies.find({entryId: entryId});
 });
 
+Meteor.publish('settings', function() {
+  return Settings.find();
+});
+
 // Users
 
 Meteor.publish('currentUser', function() {
   return Meteor.users.find(this.userId);
 });
+
 Meteor.publish('allUsers', function() {
   if (this.userId && isAdminById(this.userId)) {
     // if user is admin, publish all fields

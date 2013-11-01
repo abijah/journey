@@ -52,3 +52,9 @@
 
 }
 */
+if (Settings.find().count() === 0) {
+  Settings.insert({
+    embedCode: "asdf",
+  });
+
+  }

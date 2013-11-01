@@ -1,13 +1,13 @@
 Accounts.onCreateUser(function(options, user){
   user.profile = options.profile || {};
-  user.isInvited = false
+  user.inClosedBeta = true
   
   if (options.email)
     user.profile.email = options.email;
   
-  if (!user.profile.name)
+/*  if (!user.profile.name)
     user.profile.name = user.username;
-  
+  */
   // if this is the first user ever, make them an admin
   if ( !Meteor.users.find().count() )
     user.isAdmin = true;

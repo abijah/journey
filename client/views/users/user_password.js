@@ -1,6 +1,6 @@
 (function(){
 
-Template.user_password.events = {
+Template.userPassword.events = {
   'click input[type=submit]': function(e){
     e.preventDefault();
    

@@ -1,6 +1,20 @@
 <template name="entryPage">
 	{{#with currentEntry}}
     {{> entryItem}}
+
+    {{#if currentUser}}
+      <ul class="nav nav-tabs nav-justified">
+        <li><a href="#testimony" data-toggle="tab">Add a Testimony</a></li>
+        <li><a href="#comment" data-toggle="tab">Add a Comment</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane" id="testimony">{{> addTestimony}}</div>
+        <div class="tab-pane" id="comment">{{> commentSubmit}}</div>
+      </div>
+      {{else}}
+      <p>Please log in.</p>
+    {{/if}}
+
   	<ul class="comments">
       {{#each comments}}
         {{> comment}}
@@ -15,17 +29,6 @@
     </ul>
 
 
-    {{#if currentUser}}
-      {{> commentSubmit}}
-    {{else}}
-      <p>Please log in to leave a comment.</p>
-    {{/if}}
 
-  {{#if currentUser}}
-      {{> addTestimony}}
-    {{else}}
-      <p>Please log in to post a testimony.</p>
-    {{/if}}
   {{/with}}
-
 </template>

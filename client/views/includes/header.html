@@ -15,8 +15,19 @@
         <ul class="nav navbar-nav">
           <li><a href="{{entryLogPath}}">My Journal</a></li>
           <li><a href="{{livePagePath}}">Live</a></li>
-          <li><a href="{{usersPath}}">Users</a></li>
+          
+          {{#if currentUser.isAdmin}}
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{adminDashPath}}">Dashboard</a></li>
+              <li><a href="{{usersPath}}">Users</a></li>
+            </ul>    
+          </li>
+          {{/if}}
+
         </ul>
+
         <ul class="nav navbar-nav navbar-right">
          <li>{{#if currentUser}}</li>
             <li class="dropdown">
@@ -30,8 +41,8 @@
 
 
           {{else}}
-          <li><a href="{{user_signupPath}}">Sign Up</a></li>
-          <li><a href="{{user_signinPath}}">Sign In</a></li>
+          <li><a href="{{userSignupPath}}">Sign Up</a></li>
+          <li><a href="{{userSigninPath}}">Sign In</a></li>
          {{/if}}
         </ul>
       </div>

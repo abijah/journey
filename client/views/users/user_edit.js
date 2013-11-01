@@ -1,4 +1,4 @@
-Template.user_edit.helpers({
+Template.userEdit.helpers({
   profileIncomplete : function() {
     return Meteor.user() && !this.loading && !userProfileComplete(this);
   },
@@ -28,7 +28,7 @@ Template.user_edit.helpers({
   }
 })
 
-Template.user_edit.events = {
+Template.userEdit.events = {
   'submit form': function(e){
     e.preventDefault();
     if(!Meteor.user()) throwError('You must be logged in.');
@@ -36,15 +36,15 @@ Template.user_edit.events = {
     var user=Session.get('selectedUserId') ? Meteor.users.findOne(Session.get('selectedUserId')) : Meteor.user();
     
     var update = {
-      "profile.name": $target.find('[name=name]').val(),
-      "profile.bio": $target.find('[name=bio]').val(),
-      "profile.email": $target.find('[name=email]').val(),
+      "profile.name.firstname": $target.find('#firstname').val(),
+      "profile.name.lastname": $target.find('#lastname').val(),
+      "profile.bio": $target.find('#bio').val(),
+      "profile.email": $target.find('#email').val(),
       "profile.notificationsFrequency": parseInt($('input[name=notifications]:checked').val())
     };
     
     // TODO: enable change email
-    var email = $target.find('[name=email]').val();
-    
+   // var email = $target.find('[name=email]').val();
     var old_password = $target.find('[name=old_password]').val();
     var new_password = $target.find('[name=new_password]').val();
 
@@ -55,13 +55,14 @@ Template.user_edit.events = {
     
     Meteor.users.update(user._id, {
       $set: update
-    }, function(error){
+    }/*, function(error){
       if(error){
         throwError(error.reason);
       } else {
-        throwError('Profile updated');
-      }
-    });
-  }
+       throwError('Profile updated');
 
+      }
+    }*/);
+  }
+  
 };

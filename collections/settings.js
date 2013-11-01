@@ -4,4 +4,5 @@ Settings.allow({
   insert: isAdminById
 , update: isAdminById
 , remove: isAdminById
+
 });

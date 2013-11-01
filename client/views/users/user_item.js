@@ -1,7 +1,7 @@
-Template.user_item.rendered = function(){
+Template.userItem.rendered = function(){
 };
 
-Template.user_item.helpers({
+Template.userItem.helpers({
 /*	avatarUrl: function(){
 		return getAvatarUrl(this);
 	},
@@ -33,13 +33,13 @@ Template.user_item.helpers({
 	}
 });
 
-Template.user_item.events({
+Template.userItem.events({
 	'click .invite-link': function(e, instance){
 		e.preventDefault();
 		var user = Meteor.users.findOne(instance.data._id);
 		Meteor.users.update(user._id,{
 			$set:{
-				isInvited: true
+				inClosedBeta: true
 			}
 		}, {multi: false}, function(error){
 			if(error){
@@ -53,7 +53,7 @@ Template.user_item.events({
 		e.preventDefault();
 		Meteor.users.update(instance.data._id,{
 			$set:{
-				isInvited: false
+				inClosedBeta: false
 			}
 		});
 	},
@@ -77,5 +77,8 @@ Template.user_item.events({
 		e.preventDefault();
 		if(confirm("Are you sure you want to delete "+getDisplayName(instance.data)+"?"))
 			Meteor.users.remove(instance.data._id);
+			//delete user's tesimonies, comments, etc.
+			//Entries.remove({userId: user._id});
+			//Testimonies.remove({userId: user._id});
 	}
 })

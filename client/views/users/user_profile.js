@@ -1,4 +1,4 @@
-Template.user_profile.user = function(){
+Template.userProfile.user = function(){
 	if(userId=Session.get('selectedUserId')){
 		return Meteor.users.findOne(userId);
 	}
@@ -11,8 +11,8 @@ Template.user_profile.avatarUrl = function(){
 	});
 }
 */
-Template.user_profile.createdAtFormatted = Template.user_item.createdAtFormatted;
+Template.userProfile.createdAtFormatted = Template.userItem.createdAtFormatted;
 
-Template.user_profile.isCurrentUser = function(){
+Template.userProfile.isCurrentUser = function(){
 	return Meteor.user() && (Session.get('selectedUserId') === Meteor.user()._id);
 }

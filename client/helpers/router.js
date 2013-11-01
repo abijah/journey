@@ -1,17 +1,17 @@
  (function() {  
   // XXX: do these two really not want to set it to undefined (or null)?
-  user_profile = function(id) {
+  userProfile = function(id) {
     if(typeof id !== undefined){
       Session.set('selectedUserId', id);
     }
-    return 'user_profile';
+    return 'userProfile';
   };
 
-    user_edit = function(id) {
+    userEdit = function(id) {
     if(typeof id !== undefined){
       Session.set('selectedUserId', id);
     }
-    return 'user_edit';
+    return 'userEdit';
   };
 
 
@@ -23,12 +23,14 @@ Meteor.Router.add({
   	and: function(id) { Session.set('currentEntryId', id); }
   },
   '/live': 'livePage',
-  '/signup':'user_signup',
-  '/signin':'user_signin',
+  '/signup':'userSignup',
+  '/signin':'userSignin',
   '/users':'users',
-  '/users/:id': user_profile,
-  '/users/:id/edit': user_edit,
-  '/profile':user_edit,
+  '/forgot_password':'userPassword',
+  '/users/:id': userProfile,
+  '/users/:id/edit': userEdit,
+  '/profile':userEdit,
+  '/admin/dash': 'adminDash',
 
 });
 
@@ -40,8 +42,16 @@ Meteor.Router.filters({
       return 'loading';
     else
       return 'accessDenied';
-  }
+  },
+
+  isAdmin: function(page) {
+  return isAdmin(Meteor.user()) ? page : "no_rights";
+    }
+
+
 });
-Meteor.Router.filter('requireLogin', {only: ['entryLog', 'users']});
+
+Meteor.Router.filter('requireLogin', {only: ['entryLog', 'livePage', 'entryPage']});
+Meteor.Router.filter('isAdmin', {only: ['users', 'adminDash']});
 
 }());

@@ -2,7 +2,7 @@ Entries = new Meteor.Collection('entries');
 
 
 Entries.allow({
-	update: ownsDocument,
+	update: canEditById,
 	remove: ownsDocument
 });
 

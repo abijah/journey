@@ -1,4 +1,10 @@
 <template name="openRequests">
-
-
+<div>
+{{#each requests}}
+{{> liveRequest}}
+      {{#if currentUser.isAdmin}}
+        {{> requestControls}}
+      {{/if}}
+{{/each}}
+</div>
 </template>

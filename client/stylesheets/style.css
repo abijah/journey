@@ -92,9 +92,26 @@ body {
     text-decoration: none;
     background: rgba(0, 0, 0, 0.1);
 }
-textarea {
+
+.tab-pane {
+    display: block;
+    min-width: 400px;
+}
+
+textarea.form-control {
     resize: none;
     white-space: pre-wrap;
+}
+
+.form-horizontal {
+    padding: 0px 20px;
+}
+
+.form-signin 
+input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 .nav-select {

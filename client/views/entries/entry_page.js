@@ -10,9 +10,20 @@ Template.entryPage.helpers({
   }
 
 });
+/*
+Template.entryPage.events({
+  'click #testimony': function(event) {
+    event.preventDefault();
+    $(this).tab('show');  
+  },
+  'click #comment': function(event) {
+    event.preventDefault();
+    $(this).tab('show');
+  }
+});
+*/
 
  Template.entryPage.rendered = function () {
-    
   var currentEntryId = Session.get('currentEntryId');
 
   $('.editable').editable(function(value, setting){ 
@@ -25,5 +36,5 @@ Template.entryPage.helpers({
   });
   
   $('#right-triangle').hide();
-
 }
+
