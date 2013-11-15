@@ -9,22 +9,15 @@ Template.userSignup.events = {
       if(!firstname || !lastname || !email || !password){
         throwError('Please fill in all fields');
         return false;
-/*
-      if(!username || !email || !password){
-        throwError('Please fill in all fields');
-        return false;
-*/
-
       }
+
       Accounts.createUser({
- //     username: username,
-        email: email,  
-        password: password,
         profile: {name: {
           firstname: firstname,
           lastname: lastname
-        }
-        }
+        }        },
+        email: email,  
+        password: password,
       }, function(err){
         if(err){
           console.log(err);
@@ -36,11 +29,5 @@ Template.userSignup.events = {
 
   'click #signin': function(){
       Meteor.Router.to('/signin');
-  },
-
-  'click .twitter-button': function(){
-    Meteor.loginWithTwitter(function(){
-      Meteor.Router.to('/');
-    });
   }
 };

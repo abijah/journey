@@ -1,0 +1,50 @@
+<template name="donatePage">
+<form id="donate-form">
+
+	<div class="input-group">
+	  <span class="input-group-addon">$</span>
+	  <input type="text" class="form-control" id="amount">
+	  <span class="input-group-addon">.00 USD</span>
+	</div>
+
+    <div class="form-group">
+      <label for="firstname">First Name</label>
+      <input type="text" class="form-control" id="firstname" name="firstname" value="{{currentUser.profile.name.firstname}}"/>
+    </div>
+
+    <div class="form-group">
+      <label for="lastname">Last Name</label>
+      <input type="text" class="form-control" id="lastname" name="lastname" value="{{currentUser.profile.name.lastname}}" />
+    </div>
+
+    <div class="form-group">
+    	<label for="email">Email address</label>
+    	<input type="email" class="form-control" id="email" value="{{currentUser.profile.email}}">
+  	</div>
+
+  	<div class="form-group col-xs-6">
+	    <label>Card Number</label>
+    	<input type="text" class="form-control" data-stripe="number" value="4242424242424242"/>
+  </div>
+
+  <div class="form-group col-xs-2">
+    <label>CVC</label>
+      <input type="text" class="form-control" data-stripe="cvc"/>
+  </div>
+
+	<div class="form-inline">
+		<label>Expiration (MM/YYYY)</label>	    
+		<div class="row">
+		    <div class="col-xs-1">
+		    	<input type="text" class="form-control" data-stripe="exp-month"/>
+			</div>
+	    	<div class="inline"><span>/</span></div>
+		    <div class="col-xs-2">
+		    	<input type="text" class="form-control" data-stripe="exp-year"/>
+			</div>
+		</div>
+  </div>
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+</template>

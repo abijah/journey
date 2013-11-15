@@ -16,12 +16,13 @@ Entries.allow({
   		throw new Meteor.Error(401, "You need to login to post new stories");
   		
   		if (!entryAttributes.message)
-  		throw new Meteor.Error(422, 'Please enter message');
+  		throw new Meteor.Error(422, "Please enter message");
 
 
   		var entry = _.extend(_.pick(entryAttributes, 'message', 'status', 'privacy'), {
 	      userId: user._id, 
-	      author: firstname, 
+	      author: firstname,
+        status: 'unread', 
 	      submitted: new Date().getTime(),
         commentsCount: 0
   		});

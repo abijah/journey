@@ -23,6 +23,7 @@ Meteor.Router.add({
   	and: function(id) { Session.set('currentEntryId', id); }
   },
   '/live': 'livePage',
+  '/donate':'donatePage',
   '/signup':'userSignup',
   '/signin':'userSignin',
   '/users':'users',
@@ -43,8 +44,11 @@ Meteor.Router.filters({
     else
       return 'accessDenied';
   },
-
-  isAdmin: function(page) {
+  'clearSeenErrors': function(page){
+    clearSeenErrors();
+    return page;
+  },
+  'isAdmin': function(page) {
   return isAdmin(Meteor.user()) ? page : "no_rights";
     }
 
@@ -53,5 +57,5 @@ Meteor.Router.filters({
 
 Meteor.Router.filter('requireLogin', {only: ['entryLog', 'livePage', 'entryPage']});
 Meteor.Router.filter('isAdmin', {only: ['users', 'adminDash']});
-
+Meteor.Router.filter('clearSeenErrors');
 }());

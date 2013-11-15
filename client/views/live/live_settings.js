@@ -1,20 +1,12 @@
-Template.liveSettings.helpers({
-
-
-});
-
 Template.liveSettings.events = {
 
 	'submit form': function(event){
     	event.preventDefault();
     	var embedCodeVal = $(event.target).find('#liveEmbed').val();
-    				console.log();
-
-    	// id is poorly hardcoded
-    	Settings.update({"_id" : "pR44ghYPNdte4yxBs"}, {
+    	
+    	Settings.update({"_id" : "PNzFNbcwtso92bLXY"}, { // id is poorly hardcoded
 			$set:{
 				embedCode: (embedCodeVal),
-				
 			}
 		});
 
@@ -27,9 +19,6 @@ Template.liveSettings.events = {
 				.removeClass("btn-success").addClass("btn-danger");
 			}
 
-
-
 		}
-
 
 };

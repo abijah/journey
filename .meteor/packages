@@ -15,3 +15,5 @@ router
 roles
 accounts-ui
 bootstrap-3
+stripe
+mandrill-api
