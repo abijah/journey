@@ -1,22 +1,23 @@
 Accounts.onCreateUser(function(options, user){
-  user.profile = options.profile || {};
-  user.inClosedBeta = true
+  var userProperties = {
+    profile: options.profile || {},
+    hasAccess: false,
+    isInvited: false,
+    isAdmin: false
+  }
+  user = _.extend(user, userProperties);
   
   if (options.email)
     user.profile.email = options.email;
   
-/*  if (!user.profile.name)
-    user.profile.name = user.username;
-  */
-  // if this is the first user ever, make them an admin
-  if ( !Meteor.users.find().count() )
+  // if first user, make admin
+  if (!Meteor.users.find().count())     
     user.isAdmin = true;
+    user.hasAccess = true;
 
   return user;
 });
 
-// FIXME -- don't use this yet, until a) we are sure it's the right approach
-// b) we also update their profile at the same time.
 /*
 Meteor.methods({
   changeEmail: function(newEmail) {
@@ -34,22 +35,9 @@ Meteor.methods({
   testBuffer: function(){
     // TODO
   },
-  getScoreDiff: function(id){
-    var object = Posts.findOne(id);
-    var baseScore = object.baseScore;
-    var ageInHours = (new Date().getTime() - object.submitted) / (60 * 60 * 1000);
-    var newScore = baseScore / Math.pow(ageInHours + 2, 1.3);
-    return Math.abs(object.score - newScore);
-  },
   generateEmailHash: function(){
     var email_hash = CryptoJS.MD5(getEmail(Meteor.user()).trim().toLowerCase()).toString();
     Meteor.users.update(Meteor.userId(), {$set : {email_hash : email_hash}});
   }
 });
-
-// permissions for the profiler
-// Meteor.Profiler.allow = function(userId) {
-//   var user = Meteor.users.findOne(userId);
-//   return user && user.isAdmin;
-// };
 */

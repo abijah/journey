@@ -1,23 +1,24 @@
 <template name="userItem">
-<tr class="user">
-<!--
-	<td><span class="user-avatar" style="background-image:url({{avatarUrl}});"></span></td>
--->	
+<tr class="table user">
 	<td><a href="/users/{{_id}}/edit">{{displayName}}</a></td>
 	<td>{{createdAtFormatted}}</td>
 	<td>{{profile.email}}</td>
+	<td>{{entriesCount}}</td>
+	<td>{{commentsCount}}</td>
 	<td>
-		<a href="#">{{entriesCount}}</a>
-		<ul class="posts-list hidden">
-			{{#each entries}}
-				<li><a href="/posts/{{_id}}">{{headline}}</a></li>
-			{{/each}}
-		</ul>
+		{{#if hasAccess}}
+		<a class="disable-link" href="#"><i class="icon-check"></i>disable</a>
+		{{else}}
+		<a href="#" class="enable-link">enable</a>
+		{{/if}}
 	</td>
-	<td><a href="#">{{commentsCount}}</a></td>
-<!--	<td>{{karma}}</td>	-->
-	<td>{{#if inClosedBeta}}<a class="uninvite-link" href="#"><i class="icon-check"></i>Uninvite</a>{{else}}<a href="#" class="invite-link">Invite</a>{{/if}}</td>
-	<td>{{#if userIsAdmin}}<a class="unadmin-link" href="#"><i class="icon-check unadmin-link"></i>Unadmin</a>{{else}}<a href="#" class="admin-link">Make admin</a>{{/if}}</td>
+	<td>
+		{{#if userIsAdmin}}
+		<a class="unadmin-link" href="#"><i class="icon-check unadmin-link"></i>Unadmin</a>
+		{{else}}
+		<a href="#" class="admin-link">Make admin</a>
+		{{/if}}
+	</td>
 	<td><a class="delete-link" href="#">Delete User</a></td>
 </tr>
 </template>

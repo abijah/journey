@@ -15,16 +15,6 @@ Template.userEdit.helpers({
       currentUser = Meteor.users.findOne(Session.get('selectedUserId'));
     }
     return getEmail(currentUser);
-  },
-  hasNotificationsNone : function(){
-    return Meteor.user().profile && Meteor.user().profile.notificationsFrequency == 0 ? 'checked' : '';
-  },
-  hasNotificationsActivity : function(){
-    var u = Meteor.user();
-    return u.profile && (u.profile.notificationsFrequency == 1 || typeof u.profile.notificationsFrequency === 'undefined') ? 'checked' : '';
-  },
-  hasNotificationsAll : function(){
-    return Meteor.user().profile && Meteor.user().profile.notificationsFrequency == 2 ? 'checked' : '';
   }
 })
 
@@ -39,8 +29,7 @@ Template.userEdit.events = {
       "profile.name.firstname": $target.find('#firstname').val(),
       "profile.name.lastname": $target.find('#lastname').val(),
       "profile.bio": $target.find('#bio').val(),
-      "profile.email": $target.find('#email').val(),
-      "profile.notificationsFrequency": parseInt($('input[name=notifications]:checked').val())
+      "profile.email": $target.find('#email').val()
     };
     
     // TODO: enable change email

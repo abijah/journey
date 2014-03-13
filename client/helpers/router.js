@@ -15,7 +15,6 @@
   };
 
 
-
 Meteor.Router.add({
   '/': 'entryLog',
   '/entries/:_id' : {
@@ -37,7 +36,7 @@ Meteor.Router.add({
 
 Meteor.Router.filters({
   'requireLogin': function(page) {
-    if (Meteor.user())
+    if (Meteor.user() && hasAccess(Meteor.user()))
       return page;
      else if (Meteor.loggingIn())
       return 'loading';

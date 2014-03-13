@@ -34,26 +34,19 @@ Template.userItem.helpers({
 });
 
 Template.userItem.events({
-	'click .invite-link': function(e, instance){
-		e.preventDefault();
-		var user = Meteor.users.findOne(instance.data._id);
-		Meteor.users.update(user._id,{
-			$set:{
-				inClosedBeta: true
-			}
-		}, {multi: false}, function(error){
-			if(error){
-				throwError();
-			}else{
-				Meteor.call('createNotification','accountApproved', {}, user);
-			}
-		});
-	},
-	'click .uninvite-link': function(e, instance){
+	'click .enable-link': function(e, instance){
 		e.preventDefault();
 		Meteor.users.update(instance.data._id,{
 			$set:{
-				inClosedBeta: false
+				hasAccess: true
+			}
+		});
+	},
+	'click .disable-link': function(e, instance){
+		e.preventDefault();
+		Meteor.users.update(instance.data._id,{
+			$set:{
+				hasAccess: false
 			}
 		});
 	},

@@ -155,3 +155,9 @@ input[type="text"] {
     font-size: 1.2em;
 
 }
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

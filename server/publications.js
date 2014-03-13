@@ -29,12 +29,7 @@ Meteor.publish('allUsers', function() {
       isAdmin: false,
       emails: false,
       notifications: false,
-      'profile.email': false,
-      'services.twitter.accessToken': false,
-      'services.twitter.accessTokenSecret': false,
-      'services.twitter.id': false,
-      'services.password': false,
-      'services.resume': false
+      'profile.email': false
     }});
   }
 });
