@@ -41,7 +41,8 @@ Meteor.Router.filters({
      else if (Meteor.loggingIn())
       return 'loading';
     else
-      return 'accessDenied';
+//      return 'accessDenied';
+      return 'landingPage';
   },
   'clearSeenErrors': function(page){
     clearSeenErrors();
